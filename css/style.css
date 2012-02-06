@@ -14,11 +14,15 @@ html { font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-
 body { margin: 0; font-size: 110%; line-height: 1.5; }
 body, button, input, select, textarea { font-family: sans-serif; color: #241E1D; }
 
+address, article, aside, audio, blockquote, canvas, dd, div, dl, figcaption,
+figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, hr, ol,
+output, p, section, table, tfoot, ul, video { box-sizing: border-box; }
+
 ::-moz-selection { background: #27a0e6; color: #fff; text-shadow: none; }
 ::selection { background: #27a0e6; color: #fff; text-shadow: none; }
 
-a { color: #1F3B69; text-decoration: none; border-bottom: 1px dashed;}
-a:visited { color: #522015; }
+a { color: #1F3B69; text-decoration: none; border-bottom: 1px dashed; font-weight: bold;}
+a:visited { color: #8A260F; }
 a:hover { color: #2C5994; }
 a:focus { outline: thin dotted; }
 a:hover, a:active { outline: 0; }
@@ -86,30 +90,40 @@ td { vertical-align: top; }
  * 12 col	89.96%
  */
 
+html, body {
+	height: 100%;
+}
 body {
-	background: #d4b593;
-	background-image: linear-gradient(top, #fff4e3, #d4b593);
-	position: relative;
+	background: #e4cfaa;
+	background-image: linear-gradient(top, #e4cfaa, #967a5a);
+	background-size: 100%;
 }
 /*main, top-level sections*/
 .topsection {
 	position: relative;
 	width: 89.96%;
 	margin: 0 auto;
-	min-height: 100%;
+}
+.container {
+	height: 100%;
+	background: url('../img/mountains.png') 0% 50% repeat-x;
+	background-size: auto 100%;
 }
 .mainheader {
+	margin-top: 10%;
 }
 .mainheader h1 {
 	width: 41%;
-	margin-left: 0;	
 	text-shadow: 0px -1px rgba(0,0,0,0.5), 0px 1px rgba(255,255,255,0.3);
 }
 .mainheader strong {
 	font-size: 160%;
 	display: block;
 	margin-top: -8%; margin-bottom: 6%;
-	transition: transform 0.5s cubic-bezier(1,0,.3,2) 1s;
+	transition-property: transform, font-size;
+	transition-duration: 0.5s, 0.2s;
+	transition-timing-function: cubic-bezier(1,0,0.3,2), ease;
+	transition-delay: 1s, 0s;
 	transform: rotate(-6deg);
 	transform-origin: 130% 0%;
 }
@@ -118,14 +132,63 @@ body {
 	display: block;
 	text-align: right;
 }
-.folio {
-	position: absolute;
-	top: 0; left; 0;
-	background: url(../img/mountains.png) ;
+
+.skills {
+	height: 30%;
+	background: transparent;
+	background-image: linear-gradient(rgba(228,207,170,0.5), rgba(228,207,170,0.2));
+	box-shadow: 0 1px 5px rgba(0,0,0,0.5);
+}
+.skills .skillset {
+	float: left;
+	width: 32.4%;
+	margin: 0 0.56%;
+	padding: 0 1%;
+	position: relative;
 	height: 100%;
-	background-size: auto 100%;
-	z-index: -1;
-	
+}
+.skills .skillset:first-of-type {
+	margin-left: 0;
+}
+.skills .skillset:last-of-type {
+	margin-right: 0;
+}
+
+
+.btn {
+	display: inline-block;
+	margin: 2% auto;
+	padding: 2% 5%;
+	text-align: center;
+	border-radius: 1.5em;
+	border: 0px solid transparent;
+	font-size: 130%;
+	font-weight: normal;
+	text-shadow:	0 -1px 1px rgba(0,0,0,0.8),
+					0 1px 1px rgba(255,255,255,0.8);
+	background-color: #222;
+	background-image:	linear-gradient(rgba(228,207,170,0.5) 0%,rgba(228,207,170,0.3) 50%, rgba(228,207,170,0.2) 51%, rgba(228,207,170,0) 100%),
+						repeating-radial-gradient(50% 50%, ellipse cover, rgba(255,255,255,0), rgba(228,207,170,0.0) 0%,rgba(228,207,170,0.1) 2%,rgba(228,207,170,0.0) 3%, rgba(228,207,170,0.0) 5%,rgba(228,207,170,0.0)7%),
+						linear-gradient(#2d160b, #150a05);
+	transition-property: color, box-shadow;
+	transition-duration: 0.2s;
+	box-shadow:	0 1px 2px rgba(255,255,255,0.5) inset,
+				0 2px 2px rgba(0,0,0, 0.8);
+}
+.btn, .btn:visited {
+	color: #7D705A;
+	color: rgba(228,207,170,0.5);
+}
+.btn:hover {
+	color: #e4cfaa;
+	color: rgba(228,207,170,1);
+	box-shadow: 0 1px 2px rgba(255,255,255,0.8) inset,
+				0 4px 4px rgba(0,0,0, 0.8);
+}
+.btn:active {
+	color: rgba(228,207,170,0.2);
+	box-shadow: 0 1px 2px rgba(255,255,255,0.8) inset,
+				0 0px 0px rgba(0,0,0, 0.8);
 }
 
 /*Type*/
@@ -134,6 +197,7 @@ body, textarea, input, select {
 }
 h1 {
 	font-size: 270%;
+	margin: 0;
 }
 strong {
 	font-family: 'pacifico', 'Copse', Georgia, serif;
@@ -156,7 +220,7 @@ strong {
 span.grid {
 	height: 100%;
 	min-height: 600px;
-	width: 6.66%;
+	width: 6.58%;
 	margin: 0 0.5%;
 	float: left;
 	background-color: rgba(0,100,255,0.2);
@@ -168,6 +232,17 @@ span.grid:last-of-type {
 	margin-right: 5.02%;
 }
 
+/*clearfixin's*/
+.container:before,
+.container:after,
+.skills:before,
+.skills:after { content: ""; display: table; }
+
+.container:after,
+.skills:after { clear: both; }
+
+.container,
+.skills { zoom: 1; }
 
 /* ==|== non-semantic helper classes ======================================== */
 .ir { display: block; border: 0; text-indent: -999em; overflow: hidden; background-color: transparent; background-repeat: no-repeat; text-align: left; direction: ltr; }
@@ -188,9 +263,9 @@ span.grid:last-of-type {
 
 }
 
-@media only screen and (min-width: 768px) and (max-width: 1660px){
+@media only screen and (min-width: 1330px) and (max-width: 1625px){
 	.mainheader strong {
-		font-size: 140%;
+		font-size: 130%;
 	}
 }
 
